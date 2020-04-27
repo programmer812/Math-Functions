@@ -6,17 +6,36 @@
 
 # n! = n * n - 1 * n - 2 ...
 
+import unittest
+
 def factorial(n):
-    assert type(n) == int, "'n' must be an integer"
-    if n < 0:
-        raise ValueError("Cannot find factorial of negative number")
+    '''Finding the factorial of a number, n'''
+    if type(n) != int:
+        return "'n' must be an integer"
+    elif n < 0:
+        return "Cannot find factorial of negative number"
     elif n == 0 or n == 1:
         return 1
     else:
         return n * factorial(n - 1)
 
-print(factorial(5)) # 120
-print(factorial(1)) # 1
-print(factorial(10)) # 3628800
-print(factorial(-5)) # ValueError
-print(factorial("abc")) # AssertionError
+
+class TestFactorial(unittest.TestCase):
+    def test_basic(self):
+        testcase = 5
+        expected = 120
+        self.assertEqual(factorial(testcase), expected)
+    def test_basic_2(self):
+        testcase = 10
+        expected = 3628800
+        self.assertEqual(factorial(testcase), expected)
+    def test_edge_1(self):
+        testcase = -5
+        expected = "Cannot find factorial of negative number"
+        self.assertEqual(factorial(testcase), expected)
+    def test_edge_2(self):
+        testcase = "abc"
+        expected = "'n' must be an integer"
+        self.assertEqual(factorial(testcase), expected)
+
+unittest.main()
