@@ -4,7 +4,7 @@
 
 def fib(n):
     if n < 1:
-        return "Invalid Input"
+        return "Invalid Inputs"
     elif n == 1 or n == 2:
         return 1
     else:
@@ -12,4 +12,4 @@ def fib(n):
 
 print(fib(5)) # 5
 print(fib(10)) # 55
-print(fib(-3)) # "Invalid Input" 
+print(fib(-3)) # "Invalid Input"
